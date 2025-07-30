@@ -55,7 +55,6 @@ http://localhost:8080/
 - Spring Boot
 - Spring Data JPA
 - Spring Web
-- Spring Validation
 - MySQL
 - Hibernate
 - Maven
