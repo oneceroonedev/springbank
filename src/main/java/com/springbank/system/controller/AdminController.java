@@ -1,8 +1,11 @@
 package com.springbank.system.controller;
 
+import com.springbank.system.dto.BalanceUpdateDTO;
 import com.springbank.system.dto.CheckingAccountDTO;
 import com.springbank.system.dto.CreditCardDTO;
 import com.springbank.system.dto.SavingsAccountDTO;
+import com.springbank.system.model.Money;
+import com.springbank.system.model.accounts.Account;
 import com.springbank.system.model.accounts.CheckingAccount;
 import com.springbank.system.model.accounts.CreditCard;
 import com.springbank.system.model.accounts.Savings;
@@ -20,6 +23,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/admin")
@@ -103,5 +107,19 @@ public class AdminController {
     @PostMapping("/create")
     public Admin createAdmin(@RequestBody Admin admin) {
         return adminRepository.save(admin);
+    }
+
+    // Update balance
+    @PatchMapping("/accounts/{id}/balance")
+    public ResponseEntity<String> updateAccountBalance(@PathVariable Long id, @RequestBody BalanceUpdateDTO dto) {
+        Optional<Account> accountOpt = accountRepository.findById(id);
+        if (accountOpt.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Account not found");
+        }
+
+        Account account = accountOpt.get();
+        account.setBalance(new Money(dto.getNewBalance()));
+        accountRepository.save(account);
+        return ResponseEntity.ok("Balance updated successfully.");
     }
 }

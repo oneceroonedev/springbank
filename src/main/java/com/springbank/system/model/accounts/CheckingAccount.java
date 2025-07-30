@@ -40,5 +40,4 @@ public class CheckingAccount extends Account {
     public CheckingAccount(Money balance, AccountHolder primaryOwner, AccountHolder secondaryOwner, LocalDate creationDate, Status status) {
         super(balance, primaryOwner, secondaryOwner, creationDate, status);
     }
-
 }
