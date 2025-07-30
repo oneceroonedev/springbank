@@ -60,6 +60,7 @@ http://localhost:8080/
 - Hibernate
 - Maven
 - Lombok
+- Mockito
 - SpringDoc + Swagger UI
 
 ---
