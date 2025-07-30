@@ -29,6 +29,7 @@ The application follows a layered architecture:
 - MySQL Server
 - Recommended IDE: IntelliJ IDEA / VS Code
 - Postman
+- DBeaver
 
 
 ## 🚀 How to run the project
@@ -59,7 +60,6 @@ http://localhost:8080/
 - Hibernate
 - Maven
 - Lombok
-- Postman
 - SpringDoc + Swagger UI
 
 ---
